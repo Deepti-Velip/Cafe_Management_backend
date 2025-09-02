@@ -7,7 +7,10 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: [
+      "https://cafe-management-frontend-nine.vercel.app",
+      "http://localhost:5173",
+    ],
     credentials: true,
   },
 });
@@ -36,5 +39,5 @@ io.on("connection", (socket) => {
 
 // Start server
 httpServer.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
